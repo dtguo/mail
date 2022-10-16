@@ -67,7 +67,7 @@
             <el-button type="primary" size="mini" icon="el-icon-edit" @click="editUser(scope.row)"></el-button>
             <el-button type="primary" size="mini" icon="el-icon-delete" @click="userDel(scope.row)"></el-button>
             <el-tooltip class="item" effect="dark" content="分配角色" placement="top" :enterable="false">
-                <el-button type="primary" size="mini" icon="el-icon-s-tools"></el-button>
+                <el-button type="primary" size="mini" icon="el-icon-s-tools" @click="fenPei(scope.row)"></el-button>
     </el-tooltip>
         </div>
       </template>
@@ -124,6 +124,27 @@
     <el-button type="primary" @click="doneDel">确 定</el-button>
   </span>
 </el-dialog>
+<!-- 用户分配 -->
+<el-dialog
+  title="角色分配"
+  :visible.sync="dialogVisible3"
+  width="30%"
+  >
+  <span>用户名：{{userInfo.username}}</span>
+  <span>邮箱：{{userInfo.email}}</span>
+  <el-select v-model="value" placeholder="请选择">
+    <el-option
+      v-for="item in options"
+      :key="item.id"
+      :label="item.roleName"
+      :value="item.id">
+    </el-option>
+  </el-select>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible3 = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible3 = false">确 定</el-button>
+  </span>
+</el-dialog>
   </div>
 </template>
 
@@ -131,8 +152,12 @@
 export default {
     data(){
         return {
+          userInfo:{},
+          options:[],
+          value:'',
             // 取消删除
             dialogVisibleDel:false,
+            dialogVisible3:false,
             queryInfo:{
                 query:'',
                 pagenum:1,
@@ -177,6 +202,18 @@ export default {
         this.getUserInof()
 },
 methods: {
+  // 分配角色
+ async fenPei(data){
+    this.userInfo = data
+    // console.log(data,'userInfo')
+    this.dialogVisible3 = true
+    const {data:res} = await this.$http.get('roles')
+    console.log(res,'userInfo')
+    if(res.meta.status!==200){
+            return this.$message.error('用户权限列表失败')
+        }
+    this.options = res.data
+  },
    async getUserInof(){
       const {data:res} =  await this.$http.get('users',{
             params:this.queryInfo
