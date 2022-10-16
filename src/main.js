@@ -11,7 +11,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 const axiosIns = axios.create({
   baseURL: 'http://127.0.0.1:8888/api/private/v1/',
-  timeout: 1000,
+  timeout: 5000,
   headers: {'Authorization': window.sessionStorage.getItem('token')},
 });
 Vue.prototype.$http = axiosIns
