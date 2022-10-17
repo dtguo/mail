@@ -4,6 +4,9 @@ import App from './App.vue'
 import './assets/re.css'
 // 导入router
 import router from './router/main.js'
+// ZkTable
+import ZkTable from 'vue-table-with-tree-grid'
+Vue.use(ZkTable)
 // element-ui
 import './element/main.js'
 import 'element-ui/lib/theme-chalk/index.css';
