@@ -29,8 +29,14 @@ import {
     Select,
     Option,
     Dialog,
-    Cascader
+    Cascader,
+    Alert,
+    Tabs,
+    TabPane
 } from 'element-ui';
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Alert)
 Vue.use(Cascader)
 Vue.use(Select)
 Vue.use(Option)
