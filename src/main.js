@@ -1,5 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+// eidt-quill
+ 
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+ 
 // re.css
 import './assets/re.css'
 // 导入router
