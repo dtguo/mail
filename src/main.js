@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+// echarts
+
 // eidt-quill
  
 // require styles
