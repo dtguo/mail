@@ -38,8 +38,12 @@ import {
     Step,
     Steps,
     Upload,
-    Image
+    Image,
+    Timeline,
+    TimelineItem
 } from 'element-ui';
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.use(Image)
 Vue.use(Upload)
 Vue.use(Checkbox)
